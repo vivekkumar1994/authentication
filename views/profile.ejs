@@ -2,41 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-  <!-- Animate.css for animations -->
+  <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
 
   <style>
     body {
-      background-color: #f8f9fa;
+      background-color: #f4f6f9;
+      font-family: 'Inter', sans-serif;
+    }
+    .profile-card {
+      border: none;
+      border-radius: 15px;
+      background: white;
+    }
+    .profile-header {
+      font-weight: 600;
+      color: #343a40;
+    }
+    .profile-info li {
+      font-size: 16px;
+    }
+    .logout-btn {
+      transition: all 0.3s ease;
     }
     .logout-btn:hover {
-      transform: scale(1.02);
-      transition: all 0.3s ease;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(220, 53, 69, 0.2);
     }
   </style>
 </head>
 <body>
 
   <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow animate__animated animate__fadeInDown" style="width: 100%; max-width: 500px;">
-      <h2 class="text-center mb-4 animate__animated animate__fadeIn">Welcome, <%= user.username %></h2>
+    <div class="card shadow profile-card p-4 animate__animated animate__fadeIn" style="max-width: 500px; width: 100%;">
+      <div class="text-center mb-4">
+        <h2 class="profile-header animate__animated animate__fadeInDown">Welcome, <%= user.username %></h2>
+        <p class="text-muted">Here's your profile overview</p>
+      </div>
 
-      <ul class="list-group mb-3">
-        <li class="list-group-item"><strong>Email:</strong> <%= user.email %></li>
-        <li class="list-group-item"><strong>Joined:</strong> <%= new Date(user.created_at).toDateString() %></li>
+      <ul class="list-group list-group-flush mb-4 profile-info">
+        <li class="list-group-item d-flex justify-content-between"><strong>Email:</strong> <span><%= user.email %></span></li>
+        <li class="list-group-item d-flex justify-content-between"><strong>Joined:</strong> <span><%= new Date(user.created_at).toDateString() %></span></li>
       </ul>
 
-      <a href="/logout" class="btn btn-danger w-100 logout-btn animate__animated animate__fadeInUp">Logout</a>
+      <a href="/logout" class="btn btn-danger logout-btn w-100 animate__animated animate__fadeInUp">Logout</a>
     </div>
   </div>
 
-  <!-- Bootstrap & Animate.js JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

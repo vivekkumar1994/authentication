@@ -4,6 +4,10 @@ const auth = require('../controlers/authController');
 const user = require('../controlers/userController');
 const { verifyToken } = require('../middleware/authMiddleware');
 
+//Home
+
+router.get('/', (req, res) => res.render('home'));
+
 // Registration
 router.get('/register', (req, res) => {
   res.render('register', { error: null, success: null }); // pass empty values
